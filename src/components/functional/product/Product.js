@@ -1,14 +1,14 @@
 import "./Product.css";
-const Product = ({ props, product, OnIncrement, OnDecrement, onDelete }) => {
+const Product = ({ props, product, onIncrement, onDecrement, onDelete }) => {
   const handleIncrement = (productId) => {
     console.log("increment");
-    OnIncrement(productId);
+    onIncrement(productId);
   };
 
   const handleDecrement = (productId) => {
     console.log("decrement");
     if (product.count === 0) return alert("count product is zero");
-    OnDecrement(productId);
+    onDecrement(productId);
   };
   const handleDelete = (productId) => {
     console.log(productId);
