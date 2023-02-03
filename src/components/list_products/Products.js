@@ -26,8 +26,22 @@ class Products extends Component {
     ],
   };
 
-  deleteProduct = (id) => {
+  handleDelete = (id) => {
     const newProducts = this.state.products.filter((item) => item.id !== id);
+    this.setState({ products: newProducts });
+  };
+  handleIncrement = (productId) => {
+    const newProducts = [...this.state.products];
+    const index = newProducts.findIndex((product) => product.id === productId);
+    newProducts[index].count += 1;
+    this.setState({ products: newProducts });
+  };
+
+  handleDecrement = (productId) => {
+    const newProducts = [...this.state.products];
+    const index = newProducts.findIndex((product) => product.id === productId);
+    if (newProducts[index].count === 0) return alert("count product is zero");
+    newProducts[index].count -= 1;
     this.setState({ products: newProducts });
   };
   handleReset = () => {
@@ -48,7 +62,9 @@ class Products extends Component {
           <Product
             key={product.id}
             product={product}
-            onDelete={this.deleteProduct}
+            onDelete={this.handleDelete}
+            OnDecrement={this.handleDecrement}
+            OnIncrement={this.handleIncrement}
           />
         ))}
       </div>

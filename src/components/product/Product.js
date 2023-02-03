@@ -9,7 +9,9 @@ class Product extends Component {
         <h3 className="m-2 text-info">{this.state.title}</h3>
         <div className="product-counter">
           <button
-            onClick={this.handleIncrement}
+            onClick={() => {
+              this.handleIncrement(this.state.id);
+            }}
             className="m-2 btn btn-sm btn-success product-btn"
           >
             +
@@ -18,16 +20,16 @@ class Product extends Component {
             {this.state.count !== 0 ? this.state.count : "zero"}
           </span>
           <button
-            onClick={this.handleDecrement}
+            onClick={() => {
+              this.handleDecrement(this.state.id);
+            }}
             className="m-2 btn btn-sm btn-warning product-btn"
           >
             -
           </button>
         </div>
         <button
-          onClick={() => 
-            this.handleDelete(this.state.id)
-          }
+          onClick={() => this.handleDelete(this.state.id)}
           className="m-2 btn vtn-sm btn-danger product-btn"
         >
           delete
@@ -36,21 +38,20 @@ class Product extends Component {
     );
   }
 
-  handleIncrement = () => {
+  handleIncrement = (productId) => {
     console.log("increment");
-    this.setState({ count: ++this.state.count });
+    this.props.OnIncrement(productId);
   };
 
-  handleDecrement = () => {
+  handleDecrement = (productId) => {
     console.log("decrement");
-    const { count } = this.state;
-    if (this.state.count === 0) return alert("count product is zero");
-    this.setState({ count: --this.state.count });
+    if (this.props.product.count === 0) return alert("count product is zero");
+    this.props.OnDecrement(productId);
   };
 
-  handleDelete = (id) => {
-    console.log(id);
-    this.props.onDelete(id);
+  handleDelete = (productId) => {
+    console.log(productId);
+    this.props.onDelete(productId);
   };
 }
 
