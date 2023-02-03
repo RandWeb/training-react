@@ -1,49 +1,40 @@
-import { useState } from "react";
-import './Product.css';
-const Product = (props) => {
-  const [product, setProduct] = useState(props.product);
-
-  const handleIncrement = () => {
+import "./Product.css";
+const Product = ({ props, product, OnIncrement, OnDecrement, onDelete }) => {
+  const handleIncrement = (productId) => {
     console.log("increment");
-    setProduct({
-      id: product.id,
-      title: product.title,
-      count: ++product.count,
-      imageUrl: product.imageUrl,
-    });
+    OnIncrement(productId);
   };
 
-  const handleDecrement = () => {
+  const handleDecrement = (productId) => {
     console.log("decrement");
     if (product.count === 0) return alert("count product is zero");
-    setProduct({
-      id: product.id,
-      title: product.title,
-      count: --product.count,
-      imageUrl: product.imageUrl,
-    });
+    OnDecrement(productId);
   };
-
-  const handleDelete = (id) => {
-    console.log(id);
-    props.onDelete(id);
+  const handleDelete = (productId) => {
+    console.log(productId);
+    onDelete(productId);
   };
   return (
     <div className="product">
-          <img src={product.imageUrl} />
+      <img src={product.imageUrl} />
       <h3 className="m-2 text-info">{product.title}</h3>
-        <div className="product-counter">
-
-      <button onClick={handleIncrement} className="m-2 btn btn-sm btn-success product-btn">
-        +
-      </button>
-      <span className="m-2 badge bg-primary product-counter-count">
-        {product.count !== 0 ? product.count : "zero"}
-      </span>
-      <button onClick={handleDecrement} className="m-2 btn btn-sm btn-warning product-btn">
-        -
-      </button>
-        </div>
+      <div className="product-counter">
+        <button
+          onClick={() => handleIncrement(product.id)}
+          className="m-2 btn btn-sm btn-success product-btn"
+        >
+          +
+        </button>
+        <span className="m-2 badge bg-primary product-counter-count">
+          {product.count !== 0 ? product.count : "zero"}
+        </span>
+        <button
+          onClick={() => handleDecrement(product.id)}
+          className="m-2 btn btn-sm btn-warning product-btn"
+        >
+          -
+        </button>
+      </div>
       <button
         onClick={() => {
           handleDelete(product.id);
@@ -52,7 +43,6 @@ const Product = (props) => {
       >
         delete
       </button>
-    
     </div>
   );
 };

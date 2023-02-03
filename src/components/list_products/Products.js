@@ -30,10 +30,20 @@ class Products extends Component {
     const newProducts = this.state.products.filter((item) => item.id !== id);
     this.setState({ products: newProducts });
   };
-
+  handleReset = () => {
+    console.log("reset");
+    const newProducts = this.state.products.map((product) => {
+      product.count = 0;
+      return product;
+    });
+    this.setState({ products: newProducts });
+  };
   render() {
     return (
       <div className="list-products">
+        <button onClick={this.handleReset} className="btn btn-secondary">
+          reset
+        </button>
         {this.state.products.map((product) => (
           <Product
             key={product.id}
