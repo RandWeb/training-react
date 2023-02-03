@@ -1,13 +1,38 @@
-import { Component } from "react";
-import "./Product.css";
-class Product extends Component {
-  state = {
+import { useState } from "react";
+import './Product.css';
+const Product = () => {
+  const [product, setProduct] = useState({
     id: 1,
     title: "name product",
-    count: 0,
+    count: 2,
     imageUrl: "https://loremflickr.com/320/240",
+  });
+
+  const handleIncrement = () => {
+    console.log("increment");
+    setProduct({
+      id: product.id,
+      title: product.title,
+      count: ++product.count,
+      imageUrl: product.imageUrl,
+    });
   };
-  render() {
+
+  const handleDecrement = () => {
+    console.log("decrement");
+    if (product.count === 0) return alert("count product is zero");
+    setProduct({
+      id: product.id,
+      title: product.title,
+      count: --product.count,
+      imageUrl: product.imageUrl,
+    });
+  };
+
+  const handleDelete = (id) => {
+    console.log(id);
+  };
+  return (
     <div className="product">
           <img src={product.imageUrl} />
       <h3 className="m-2 text-info">{product.title}</h3>
@@ -33,21 +58,7 @@ class Product extends Component {
       </button>
     
     </div>
-  }
-
-  handleIncrement = () => {
-    console.log("increment");
-    this.setState({ count: ++this.state.count });
-  };
-  handleDecrement = () => {
-    console.log("decrement");
-    const { count } = this.state;
-    if (count === 0) return alert("count product is zero");
-    this.setState({ count: --count });
-  };
-  handleDelete = (id) => {
-    console.log(id);
-  };
-}
+  );
+};
 
 export default Product;
