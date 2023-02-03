@@ -40,13 +40,13 @@ class Product extends Component {
 
   handleIncrement = (productId) => {
     console.log("increment");
-    this.props.OnIncrement(productId);
+    this.props.onIncrement(productId);
   };
 
   handleDecrement = (productId) => {
     console.log("decrement");
     if (this.props.product.count === 0) return alert("count product is zero");
-    this.props.OnDecrement(productId);
+    this.props.onDecrement(productId);
   };
 
   handleDelete = (productId) => {
