@@ -26,6 +26,7 @@ const Product = (props) => {
 
   const handleDelete = (id) => {
     console.log(id);
+    props.onDelete(id);
   };
   return (
     <div className="product">
