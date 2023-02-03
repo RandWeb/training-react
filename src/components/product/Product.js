@@ -50,6 +50,7 @@ class Product extends Component {
 
   handleDelete = (id) => {
     console.log(id);
+    this.props.onDelete(id);
   };
 }
 
