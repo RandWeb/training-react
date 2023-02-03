@@ -1,12 +1,7 @@
 import { useState } from "react";
 import './Product.css';
-const Product = () => {
-  const [product, setProduct] = useState({
-    id: 1,
-    title: "name product",
-    count: 2,
-    imageUrl: "https://loremflickr.com/320/240",
-  });
+const Product = (props) => {
+  const [product, setProduct] = useState(props.product);
 
   const handleIncrement = () => {
     console.log("increment");
