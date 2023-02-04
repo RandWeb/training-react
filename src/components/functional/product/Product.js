@@ -1,18 +1,22 @@
 import "./Product.css";
-const Product = ({ props, product, onIncrement, onDecrement, onDelete }) => {
+import { useContext } from "react";
+import ProductsContext from "../../../context/products/products";
+
+const Product = ({ props, product}) => {
+  const productsContext = useContext(ProductsContext);
   const handleIncrement = (productId) => {
     console.log("increment");
-    onIncrement(productId);
+    productsContext.onIncrement(productId);
   };
 
   const handleDecrement = (productId) => {
     console.log("decrement");
     if (product.count === 0) return alert("count product is zero");
-    onDecrement(productId);
+    productsContext.onDecrement(productId);
   };
   const handleDelete = (productId) => {
     console.log(productId);
-    onDelete(productId);
+    productsContext.onDelete(productId);
   };
   return (
     <div className="product">

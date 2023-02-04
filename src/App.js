@@ -1,7 +1,7 @@
 import { Component } from "react";
-// نکته در مورد رندر: فقط یک تگ را برمیگرداند دوتا باشد خطا می دهد
 import Products from "./components/list_products/Products";
 import Navbar from "./components/navigation/Navbar";
+import ProductsContext from "./context/products/products";
 
 //shortcut class component: cc
 class App extends Component {
@@ -31,15 +31,20 @@ class App extends Component {
   render() {
     return (
       <>
-        <Navbar products={this.state.products} />
+        <ProductsContext.Provider
+          value={{
+            products: this.state.products,
+            onDelete: this.handleDelete,
+            onDecrement: this.handleDecrement,
+            onIncrement: this.handleIncrement,
+            onReset: this.handleReset,
+          }}
+        >
+          <Navbar />
+          
+          <Products />
 
-        <Products
-          products={this.state.products}
-          onDelete={this.handleDelete}
-          onDecrement={this.handleDecrement}
-          onIncrement={this.handleIncrement}
-          onReset={this.handleReset}
-        />
+        </ProductsContext.Provider>
       </>
     );
   }

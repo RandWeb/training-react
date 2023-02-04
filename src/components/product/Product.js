@@ -1,6 +1,9 @@
 import { Component } from "react";
 import "./Product.css";
+import ProductsContext from "../../context/products/products";
+
 class Product extends Component {
+  static contextType = ProductsContext;
   state = this.props.product;
   render() {
     return (
@@ -40,18 +43,18 @@ class Product extends Component {
 
   handleIncrement = (productId) => {
     console.log("increment");
-    this.props.onIncrement(productId);
+    this.context.onIncrement(productId);
   };
 
   handleDecrement = (productId) => {
     console.log("decrement");
     if (this.props.product.count === 0) return alert("count product is zero");
-    this.props.onDecrement(productId);
+    this.context.onDecrement(productId);
   };
 
   handleDelete = (productId) => {
     console.log(productId);
-    this.props.onDelete(productId);
+    this.context.onDelete(productId);
   };
 }
 
