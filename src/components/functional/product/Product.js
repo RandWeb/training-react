@@ -1,8 +1,13 @@
 import "./Product.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ProductsContext from "../../../context/products/products";
 
-const Product = ({ props, product}) => {
+const Product = ({ props, product }) => {
+  useEffect(() => {
+    return () => {
+      console.log("Product - UnMount");
+    };
+  },[]);
   const productsContext = useContext(ProductsContext);
   const handleIncrement = (productId) => {
     console.log("increment");

@@ -1,9 +1,17 @@
 import Products from "../list_products/Products";
 import Navbar from "./Navbar";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import ProductsContext from "../../../context/products/products";
 
 const App = () => {
+  useEffect(()=>{
+    console.log("App - Mount And Update");
+  });
+
+  useEffect(()=>{
+    console.log("App - Mount");
+  },[]);
+  
   const [products, setProducts] = useState([
     {
       id: 1,
