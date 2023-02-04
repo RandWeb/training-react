@@ -5,14 +5,6 @@ import ProductsContext from "./context/products/products";
 
 //shortcut class component: cc
 class App extends Component {
-  constructor(props) {
-    super(props);
-    console.log("App - Constructor");
-  }
-
-  componentDidMount(){
-    console.log("App - componentDidMount");
-  }
 
   state = {
     products: [
@@ -36,7 +28,9 @@ class App extends Component {
       },
     ],
   };
-
+  componentDidUpdate() {
+    console.log("App - DidUpdate");
+  }
   render() {
     console.log("App - Render");
     return (

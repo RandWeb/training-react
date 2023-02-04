@@ -5,13 +5,8 @@ import ProductsContext from "../../context/products/products";
 class Product extends Component {
   static contextType = ProductsContext;
   state = this.props.product;
-  constructor(props) {
-    super(props);
-    console.log("Product - Constructor");
-  }
-
-  componentDidMount(){
-    console.log("Product - componentDidMount");
+  componentDidUpdate() {
+    console.log("Product - DidUpdate");
   }
   render() {
     console.log("Product - Render");
