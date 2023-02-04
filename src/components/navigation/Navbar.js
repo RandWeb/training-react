@@ -6,6 +6,10 @@ class Navbar extends Component {
   componentDidUpdate() {
     console.log("Navbar - DidUpdate");
   }
+
+  componentWillUnmount(){
+    console.log("Navbar - Unmount");
+  }
   calculateSumCount = () => {
     console.log(this.context.products)
     let sum = 0;

@@ -5,7 +5,6 @@ import ProductsContext from "./context/products/products";
 
 //shortcut class component: cc
 class App extends Component {
-
   state = {
     products: [
       {
@@ -30,6 +29,9 @@ class App extends Component {
   };
   componentDidUpdate() {
     console.log("App - DidUpdate");
+  }
+  componentWillUnmount() {
+    console.log("App - Unmount");
   }
   render() {
     console.log("App - Render");

@@ -8,6 +8,9 @@ class Products extends Component {
   componentDidUpdate() {
     console.log("Products - DidUpdate");
   }
+  componentWillUnmount(){
+    console.log("Products - Unmount");
+  }
   render() {
     console.log("Products - Render");
     return (
