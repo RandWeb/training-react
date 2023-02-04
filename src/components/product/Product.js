@@ -5,7 +5,16 @@ import ProductsContext from "../../context/products/products";
 class Product extends Component {
   static contextType = ProductsContext;
   state = this.props.product;
+  constructor(props) {
+    super(props);
+    console.log("Product - Constructor");
+  }
+
+  componentDidMount(){
+    console.log("Product - componentDidMount");
+  }
   render() {
+    console.log("Product - Render");
     return (
       <div className="product">
         <img src={this.state.imageUrl} />

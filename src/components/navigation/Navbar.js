@@ -3,7 +3,14 @@ import ProductsContext from "../../context/products/products";
 
 class Navbar extends Component {
   static contextType = ProductsContext;
+  constructor(props) {
+    super(props);
+    console.log("Navbar - Constructor");
+  }
 
+  componentDidMount(){
+    console.log("Navbar - componentDidMount");
+  }
   calculateSumCount = () => {
     console.log(this.context.products)
     let sum = 0;
@@ -13,6 +20,7 @@ class Navbar extends Component {
     return sum;
   };
   render() {
+    console.log("Navbar - Render");
     return (
       <nav className="navbar navbar-light bg-light">
         <div className="container-fluid">
